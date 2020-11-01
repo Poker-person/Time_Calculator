@@ -1,3 +1,6 @@
+# Colocar 0 no início quando hora < 10
+# Colocar argumento "dias da semana"
+
 def add_time(start, duration):
     time = start.split()
     hour = time[0]
