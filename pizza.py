@@ -1,6 +1,6 @@
-# Colocar 0 no início quando hora < 10
-# Colocar argumento "dias da semana"
-
+# Add "Next day" and "n days later" string
+# Add day of the week variable
+##
 def add_time(start, duration):
     time = start.split()
     hour = time[0]
@@ -22,17 +22,15 @@ def add_time(start, duration):
         else:
             period = "PM"
 
-    b = str(new_h), str(new_m)
+    b = str(new_h), str(new_m).zfill(2)
 
-    a = ':'.join(b) + ' ' + period
-
-    if b[0] in range(1, 9):
-        a += '0'
-
-    #c = ' '.join(a, period)
+    if b[0] not in ["10", "11", "12"]:
+        a = '0' + ':'.join(b) + ' ' + period
+    else:
+        a = ':'.join(b) + ' ' + period
 
     return a
 
-print("x1:", add_time("02:10 PM", "03:25"))
+print("x1:", add_time("09:10 PM", "03:25"))
 print("x2:", add_time("11:10 PM", "03:25"))
 print("x3:", add_time("02:40 PM", "03:25"))
