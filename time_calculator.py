@@ -1,9 +1,10 @@
-def add_time(start, duration):
+def add_time(start, duration, weekday=None):
     # Split input
     time = start.split()
     hour = time[0]
     period = time[1]
     x = 0
+    D = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
     # Split 'split' result and calculate 'start + duration'
     start_h, start_m = hour.split(':')
@@ -39,6 +40,13 @@ def add_time(start, duration):
     b = str(new_h), str(new_m).zfill(2)
 
     a = ':'.join(b) + ' ' + period
+
+    # Calculate weekday based on input and period cycle
+    if weekday:
+        day = D.index(weekday.title())
+        day_out = int((day + y) % 7)
+        a += ',' + ' ' + str(D[day_out])
+
 
     # Adds 'next day' or 'n days later' based on period cycle done above
     if y == 1:
